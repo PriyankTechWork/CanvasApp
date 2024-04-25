@@ -29,7 +29,7 @@ export default function Sidebar() {
     context.scale(2, 2);
     context.lineCap = "round";
     contextRef.current = context;
-  }, [width]);
+  }, []);
 
   const startDrawing = ({ nativeEvent }) => {
     const x = nativeEvent.offsetX;
@@ -262,7 +262,7 @@ export default function Sidebar() {
                 setShape("line");
               }}
             >
-              <i class="fa-solid fa-slash"></i>
+              <i className="fa-solid fa-slash"></i>
             </li>
             <li
               onClick={() => {
