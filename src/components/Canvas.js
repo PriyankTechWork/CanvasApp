@@ -29,6 +29,8 @@ export default function Sidebar() {
     context.scale(2, 2);
     context.lineCap = "round";
     contextRef.current = context;
+    contextRef.current.fillStyle = "#fff";
+    contextRef.current.fillRect(0, 0, canvas.width, canvas.height);
   }, []);
 
   const startDrawing = ({ nativeEvent }) => {
@@ -118,6 +120,13 @@ export default function Sidebar() {
       contextRef.current.lineTo(x, y);
       contextRef.current.stroke();
     }
+  };
+
+  const downloadCanvas = () => {
+    const link = document.createElement("a");
+    link.download = `${Date.now()}.jpg`;
+    link.href = canvasRef.current.toDataURL();
+    link.click();
   };
 
   return (
@@ -358,6 +367,13 @@ export default function Sidebar() {
           }}
         >
           <i className="fa-solid fa-arrows-rotate"></i>
+        </div>
+        <div
+          onClick={() => {
+            downloadCanvas();
+          }}
+        >
+          <i class="fa-solid fa-download"></i>
         </div>
       </div>
 
